@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DDS Computer Service — PC & Laptop Herstelling in Lokeren</title>
+<meta name="description" content="DDS Computer Service in Lokeren: herstelling van pc's en laptops, verwijderen van virussen, verkoop van hardware en meer. Sinds 2014, 5.0★ op Google (13 reviews). Werken op afspraak.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "DDS Computer Service",
+  "telephone": "+32498439285",
+  "email": "info@ddscomputerservice.be",
+  "url": "https://ddscomputerservice.be",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Boekweithof 1",
+    "postalCode": "9180",
+    "addressLocality": "Lokeren",
+    "addressCountry": "BE"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "13"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "19:00", "closes": "21:00" }
+  ],
+  "foundingDate": "2014"
+}
+</script>
+
+<style>
+  :root{
+    --carbon: #14181C;
+    --carbon-2: #1D2329;
+    --steel: #2B333B;
+    --copper: #D98A4B;
+    --copper-light: #F0AD6E;
+    --teal: #4FA79E;
+    --paper: #F5F2ED;
+    --panel: #FFFFFF;
+    --ink: #1A1F24;
+    --ink-soft: #5B6570;
+    --line: rgba(20,24,28,0.1);
+    --shadow: 0 20px 50px -25px rgba(20,24,28,0.35);
+    --radius: 16px;
+    --maxw: 1140px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+
+  body{
+    margin:0;
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+
+  :focus-visible{ outline:3px solid var(--copper); outline-offset:3px; }
+
+  /* ---------- Circuit motif ---------- */
+  .circuit{ display:flex; align-items:center; gap:0; }
+  .circuit svg{ display:block; }
+
+  .node-row{ display:flex; gap:10px; align-items:center; }
+  .node{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--copper);
+    box-shadow:0 0 0 3px rgba(217,138,75,0.18);
+  }
+  .node-line{ height:2px; width:26px; background:var(--copper); opacity:0.55; }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(20,24,28,0.94);
+    backdrop-filter:blur(6px);
+    color:var(--paper);
+    border-bottom:1px solid rgba(245,242,237,0.08);
+  }
+  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 24px; }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--paper); }
+  .brand .mark{
+    width:34px; height:34px; border-radius:9px;
+    background:var(--carbon-2);
+    border:1px solid rgba(217,138,75,0.4);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .brand .mark svg{ width:18px; height:18px; }
+  .brand .word{ font-family:'Space Grotesk', sans-serif; font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; }
+  .brand .word span{ color:var(--copper); }
+  .nav-links{ display:none; gap:26px; font-size:0.92rem; font-weight:600; }
+  .nav-links a{ text-decoration:none; opacity:0.85; transition:opacity 0.15s; }
+  .nav-links a:hover{ opacity:1; color:var(--copper-light); }
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--copper); color:var(--carbon);
+    text-decoration:none; font-weight:700; font-size:0.86rem;
+    padding:10px 16px; border-radius:10px;
+    transition:transform 0.15s ease, background 0.15s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{ background:var(--copper-light); transform:translateY(-1px); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg, var(--carbon), var(--carbon-2));
+    color:var(--paper);
+    padding:68px 0 80px;
+    overflow:hidden;
+  }
+  .hero .circuit-bg{
+    position:absolute; inset:0;
+    opacity:0.16;
+    pointer-events:none;
+  }
+  .hero .wrap{ position:relative; display:grid; gap:36px; }
+  .pill-row{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:22px; }
+  .pill{
+    display:inline-flex; align-items:center; gap:7px;
+    background:rgba(245,242,237,0.07);
+    border:1px solid rgba(245,242,237,0.16);
+    padding:8px 14px; border-radius:999px;
+    font-size:0.82rem; font-weight:600;
+  }
+  .pill .mono{ color:var(--copper-light); }
+  .status-dot{ width:8px; height:8px; border-radius:50%; background:var(--teal); box-shadow:0 0 0 3px rgba(79,167,158,0.25); display:inline-block; }
+  .status-dot.closed{ background:#C9744A; box-shadow:0 0 0 3px rgba(201,116,74,0.25); }
+
+  .hero h1{
+    font-size:clamp(2.2rem, 5.6vw, 3.4rem);
+    line-height:1.08;
+    max-width:16ch;
+  }
+  .hero h1 .accent{ color:var(--copper); }
+  .hero p.lede{
+    margin-top:18px; font-size:1.05rem; line-height:1.65;
+    color:rgba(245,242,237,0.78); max-width:46ch;
+  }
+  .hero-actions{ margin-top:28px; display:flex; flex-wrap:wrap; gap:14px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    text-decoration:none; font-weight:700; font-size:0.94rem;
+    padding:14px 22px; border-radius:10px; border:1px solid transparent;
+    transition:transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary{ background:var(--copper); color:var(--carbon); }
+  .btn-primary:hover{ background:var(--copper-light); transform:translateY(-2px); box-shadow:0 12px 24px -10px rgba(217,138,75,0.5); }
+  .btn-teal{ background:var(--teal); color:var(--carbon); }
+  .btn-teal:hover{ background:#63BAB1; transform:translateY(-2px); }
+  .btn-ghost{ border-color:rgba(245,242,237,0.3); color:var(--paper); }
+  .btn-ghost:hover{ background:rgba(245,242,237,0.08); transform:translateY(-2px); }
+  .btn-dark{ background:var(--carbon); color:var(--paper); }
+  .btn-dark:hover{ background:var(--carbon-2); transform:translateY(-2px); }
+
+  .hero-note{
+    margin-top:30px; display:flex; gap:10px; align-items:flex-start;
+    font-size:0.86rem; color:rgba(245,242,237,0.65); max-width:46ch;
+  }
+
+  /* ---------- Sections ---------- */
+  section{ padding:74px 0; }
+  .section-head{ max-width:58ch; margin-bottom:42px; }
+  .eyebrow{
+    text-transform:uppercase; letter-spacing:0.14em; font-size:0.72rem;
+    font-weight:700; color:var(--copper); margin-bottom:12px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .section-head h2{ font-size:clamp(1.65rem, 3.2vw, 2.3rem); color:var(--carbon); }
+  .section-head p{ margin-top:14px; color:var(--ink-soft); font-size:1.01rem; line-height:1.6; }
+
+  /* ---------- Problems grid ---------- */
+  .problems{ background:var(--paper); }
+  .problem-grid{ display:grid; grid-template-columns:1fr; gap:18px; }
+  .problem-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px; box-shadow:var(--shadow);
+    display:flex; gap:14px; align-items:flex-start;
+  }
+  .problem-card .icon{
+    width:40px; height:40px; border-radius:10px; flex-shrink:0;
+    background:rgba(217,138,75,0.12); color:var(--copper);
+    display:flex; align-items:center; justify-content:center; font-size:1.15rem;
+  }
+  .problem-card h3{ font-size:1rem; margin-bottom:4px; }
+  .problem-card p{ margin:0; font-size:0.9rem; color:var(--ink-soft); line-height:1.5; }
+
+  /* ---------- Sales section ---------- */
+  .sales{ background:var(--carbon); color:var(--paper); }
+  .sales .eyebrow{ color:var(--copper-light); }
+  .sales .section-head h2{ color:var(--paper); }
+  .sales .section-head p{ color:rgba(245,242,237,0.7); }
+  .sales-grid{ display:grid; grid-template-columns:1fr; gap:14px; }
+  .sales-item{
+    display:flex; align-items:center; gap:12px;
+    background:rgba(245,242,237,0.05);
+    border:1px solid rgba(245,242,237,0.1);
+    border-radius:12px; padding:16px 18px; font-weight:600; font-size:0.96rem;
+  }
+  .sales-item .node{ background:var(--teal); box-shadow:0 0 0 3px rgba(79,167,158,0.2); flex-shrink:0; }
+
+  /* ---------- Pricing ---------- */
+  .pricing{ background:var(--paper); }
+  .price-card{
+    background:var(--carbon-2); color:var(--paper);
+    border-radius:20px; padding:8px; box-shadow:var(--shadow);
+    max-width:640px;
+  }
+  .price-card-inner{ background:var(--carbon); border-radius:16px; padding:32px; }
+  .price-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:18px; border-bottom:1px dashed rgba(245,242,237,0.2); padding-bottom:16px; }
+  .price-head .mono{ font-size:0.78rem; color:rgba(245,242,237,0.55); }
+  .price-row{ display:flex; justify-content:space-between; gap:14px; padding:13px 0; border-bottom:1px solid rgba(245,242,237,0.08); font-size:0.95rem; }
+  .price-row:last-of-type{ border-bottom:none; }
+  .price-row .label{ color:rgba(245,242,237,0.88); max-width:32ch; }
+  .price-row .amount{ font-family:'JetBrains Mono', monospace; font-weight:700; color:var(--copper-light); white-space:nowrap; }
+  .price-foot{ margin-top:18px; font-size:0.82rem; color:rgba(245,242,237,0.55); }
+
+  /* ---------- Drone highlight ---------- */
+  .drone{ background:linear-gradient(150deg, var(--teal), #2F7A72); color:var(--carbon); }
+  .drone .wrap{ display:grid; gap:28px; align-items:center; }
+  .drone-badge{
+    display:inline-flex; align-items:center; gap:8px; background:rgba(20,24,28,0.12);
+    padding:8px 14px; border-radius:999px; font-size:0.8rem; font-weight:700; margin-bottom:16px;
+  }
+  .drone h2{ font-size:clamp(1.5rem, 3vw, 2.1rem); color:var(--carbon); }
+  .drone p{ margin-top:14px; line-height:1.65; color:rgba(20,24,28,0.82); font-size:1rem; max-width:56ch; }
+  .drone-videos{ display:grid; grid-template-columns:1fr; gap:14px; }
+  .drone-video-card{
+    position:relative; display:block; border-radius:14px; overflow:hidden;
+    box-shadow:0 16px 36px -18px rgba(20,24,28,0.4);
+    aspect-ratio:16/9;
+    background:linear-gradient(135deg, var(--carbon-2), var(--carbon));
+  }
+  .drone-video-card img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 0.35s ease, opacity 0.2s ease;
+  }
+  .drone-video-card:hover img{ transform:scale(1.05); }
+  .drone-video-card::after{
+    content:""; position:absolute; inset:0; background:rgba(20,24,28,0.22);
+    transition:background 0.2s ease;
+  }
+  .drone-video-card:hover::after{ background:rgba(20,24,28,0.35); }
+  .drone-video-card .play-btn{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:52px; height:52px; border-radius:50%;
+    background:var(--copper);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 20px -6px rgba(20,24,28,0.5);
+    z-index:2;
+    transition:transform 0.2s ease, background 0.2s ease;
+  }
+  .drone-video-card:hover .play-btn{ transform:translate(-50%,-50%) scale(1.08); background:var(--copper-light); }
+
+  .folder-banner{
+    margin-top:18px; max-width:640px;
+    display:flex; align-items:center; gap:16px;
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 22px; box-shadow:var(--shadow); text-decoration:none; color:var(--ink);
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .folder-banner:hover{ transform:translateY(-2px); box-shadow:0 24px 50px -20px rgba(20,24,28,0.3); }
+  .folder-banner .icon{ font-size:1.6rem; flex-shrink:0; }
+  .folder-title{ display:block; font-weight:700; font-size:1rem; color:var(--carbon); }
+  .folder-sub{ display:block; font-size:0.85rem; color:var(--ink-soft); margin-top:2px; }
+  .folder-banner .arrow{ margin-left:auto; color:var(--copper); font-size:1.2rem; flex-shrink:0; }
+
+  /* ---------- About ---------- */
+  .about{ background:var(--paper); }
+  .about .wrap{ display:grid; gap:36px; align-items:center; }
+  .about-stat{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:28px; box-shadow:var(--shadow); text-align:center;
+  }
+  .about-stat .big{ font-family:'Space Grotesk', sans-serif; font-size:2.6rem; font-weight:700; color:var(--copper); }
+  .about-stat .small{ margin-top:6px; font-size:0.88rem; color:var(--ink-soft); font-weight:600; }
+  .about-copy p{ margin-top:14px; color:var(--ink-soft); line-height:1.7; font-size:1.02rem; }
+
+  /* ---------- Contact ---------- */
+  .contact{ background:var(--carbon-2); color:var(--paper); }
+  .contact .eyebrow{ color:var(--copper-light); }
+  .contact .section-head h2{ color:var(--paper); }
+  .contact .section-head p{ color:rgba(245,242,237,0.7); }
+  .contact-grid{ display:grid; grid-template-columns:1fr; gap:24px; }
+  .contact-card{
+    background:rgba(245,242,237,0.05); border:1px solid rgba(245,242,237,0.1);
+    border-radius:var(--radius); padding:28px;
+  }
+  .contact-card .row{ display:flex; gap:14px; padding:13px 0; border-bottom:1px solid rgba(245,242,237,0.08); align-items:flex-start; }
+  .contact-card .row:last-of-type{ border-bottom:none; }
+  .contact-card .row .icon{
+    width:38px; height:38px; border-radius:10px; background:rgba(217,138,75,0.15); color:var(--copper-light);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.05rem;
+  }
+  .contact-card .label{ font-size:0.74rem; color:rgba(245,242,237,0.5); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:3px; }
+  .contact-card a.value{ font-weight:700; text-decoration:none; color:var(--paper); }
+  .contact-card a.value:hover{ color:var(--copper-light); }
+  .contact-card .sub{ font-size:0.82rem; color:rgba(245,242,237,0.55); margin-top:2px; }
+
+  table.hours{ width:100%; border-collapse:collapse; font-size:0.95rem; }
+  table.hours td{ padding:12px 4px; border-bottom:1px solid rgba(245,242,237,0.08); color:rgba(245,242,237,0.75); }
+  table.hours td:first-child{ font-weight:700; color:var(--paper); width:42%; }
+  table.hours tr.today td{ color:var(--copper-light); font-weight:700; }
+  table.hours tr.closed td:last-child{ font-style:italic; color:rgba(245,242,237,0.45); }
+
+  .map-frame{
+    border-radius:var(--radius); overflow:hidden; border:1px solid rgba(245,242,237,0.12);
+    min-height:240px; position:relative; display:block; text-decoration:none; isolation:isolate;
+  }
+  .map-frame svg{ width:100%; height:100%; min-height:240px; display:block; transition:transform 0.4s ease; }
+  .map-frame:hover svg{ transform:scale(1.04); }
+  .map-label{
+    position:absolute; left:14px; right:14px; bottom:14px;
+    background:rgba(20,24,28,0.9); color:var(--paper);
+    border-radius:10px; padding:11px 14px; display:flex; flex-direction:column; gap:2px;
+  }
+  .map-label-title{ font-weight:700; font-size:0.9rem; }
+  .map-label-sub{ font-size:0.78rem; color:var(--copper-light); }
+
+  .social-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+  .social-tag{
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(245,242,237,0.06); border:1px dashed rgba(245,242,237,0.25);
+    padding:8px 14px; border-radius:999px; font-size:0.82rem; color:rgba(245,242,237,0.6);
+  }
+
+  /* ---------- Footer ---------- */
+  footer{ background:var(--carbon); color:rgba(245,242,237,0.6); padding:36px 0 100px; font-size:0.88rem; }
+  footer .wrap{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; align-items:center; }
+  footer .foot-links{ display:flex; gap:16px; flex-wrap:wrap; }
+  footer .foot-links a{ text-decoration:none; color:rgba(245,242,237,0.6); }
+  footer .foot-links a:hover{ color:var(--copper-light); }
+
+  /* ---------- Mobile sticky bar ---------- */
+  .mobile-bar{
+    position:fixed; bottom:0; left:0; right:0; z-index:60; display:flex; gap:10px;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    background:rgba(20,24,28,0.97); backdrop-filter:blur(6px);
+    border-top:1px solid rgba(245,242,237,0.1);
+  }
+  .mobile-bar a{ flex:1; text-align:center; text-decoration:none; font-weight:700; font-size:0.9rem; padding:13px 8px; border-radius:10px; }
+  .mobile-bar .wa{ background:var(--teal); color:var(--carbon); }
+  .mobile-bar .call{ background:var(--copper); color:var(--carbon); }
+
+  @media (min-width:640px){
+    .problem-grid{ grid-template-columns:1fr 1fr; }
+    .sales-grid{ grid-template-columns:1fr 1fr; }
+    .contact-grid{ grid-template-columns:1.1fr 0.9fr; }
+  }
+  @media (min-width:860px){
+    .nav-links{ display:flex; }
+    .hero .wrap{ grid-template-columns:1.1fr 0.9fr; align-items:center; }
+    .about .wrap{ grid-template-columns:0.8fr 1.2fr; }
+    .drone .wrap{ grid-template-columns:1.1fr 0.9fr; }
+    .drone-videos{ grid-template-columns:1fr 1fr; }
+    .mobile-bar{ display:none; }
+    body{ padding-bottom:0; }
+  }
+  @media (max-width:859px){ body{ padding-bottom:82px; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="12" rx="2" stroke="#D98A4B" stroke-width="1.6"/><path d="M8 20h8M12 16v4" stroke="#D98A4B" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </span>
+      <span class="word">DDS <span>Computer</span> Service</span>
+    </a>
+    <div class="nav-links">
+      <a href="#diensten">Diensten</a>
+      <a href="#tarieven">Tarieven</a>
+      <a href="#drone">Drone</a>
+      <a href="#over-ons">Over ons</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="https://wa.me/32498439285" target="_blank" rel="noopener">WhatsApp ons</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="circuit-bg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g stroke="#D98A4B" stroke-width="1.4" fill="none">
+      <path d="M0 80 H180 L220 120 H420 L460 80 H800"/>
+      <path d="M0 220 H120 L150 250 V400"/>
+      <path d="M650 0 V150 L700 200 H800"/>
+      <path d="M100 500 V420 L140 380 H320 L360 340"/>
+      <path d="M760 500 V320 L720 280 H540"/>
+    </g>
+    <g fill="#D98A4B">
+      <circle cx="180" cy="80" r="4"/><circle cx="420" cy="120" r="4"/><circle cx="150" cy="250" r="4"/>
+      <circle cx="650" cy="150" r="4"/><circle cx="700" cy="200" r="4"/><circle cx="140" cy="380" r="4"/>
+      <circle cx="360" cy="340" r="4"/><circle cx="720" cy="280" r="4"/><circle cx="540" cy="280" r="4"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div>
+      <div class="pill-row">
+        <span class="pill"><span class="mono">EST. 2014</span></span>
+        <span class="pill">★★★★★ <span class="mono">5.0 · 13 reviews</span></span>
+        <span class="pill" id="status-badge"><span class="status-dot" id="status-dot"></span> <span id="status-text">Status wordt geladen…</span></span>
+      </div>
+      <h1>Uw pc- of laptopprobleem, <span class="accent">opgelost.</span></h1>
+      <p class="lede">DDS Computer Service in Lokeren herstelt pc's en laptops, verwijdert virussen en spyware, en verkoopt hardware op maat. Persoonlijke service, sinds 2014.</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-teal" href="https://wa.me/32498439285" target="_blank" rel="noopener">WhatsApp een afspraak</a>
+        <a class="btn btn-ghost" href="mailto:info@ddscomputerservice.be">Stuur een mail</a>
+      </div>
+
+      <div class="hero-note">
+        <span aria-hidden="true">ⓘ</span>
+        <span>Werken uitsluitend op afspraak. Telefonisch bereikbaar op weekdagen tussen 19u en 21u — mail, WhatsApp of Instagram werkt op elk moment.</span>
+      </div>
+    </div>
+
+    <div class="node-row" style="justify-content:flex-end; flex-wrap:wrap;" aria-hidden="true">
+      <span class="node"></span><span class="node-line"></span>
+      <span class="node"></span><span class="node-line"></span>
+      <span class="node"></span><span class="node-line"></span>
+      <span class="node"></span>
+    </div>
+  </div>
+</header>
+
+<section class="problems" id="diensten">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="node" style="width:6px;height:6px;"></span> Herstelling</div>
+      <h2>Wat we oplossen</h2>
+      <p>Van een trage laptop tot een gebroken scherm — de meest voorkomende pc-problemen, opgelost door één vast aanspreekpunt.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <span class="icon" aria-hidden="true">⏱</span>
+        <div><h3>Trage pc of laptop</h3><p>Grondige opkuis en optimalisatie zodat je toestel weer aanvoelt als nieuw.</p></div>
+      </div>
+      <div class="problem-card">
+        <span class="icon" aria-hidden="true">⚠</span>
+        <div><h3>Ongewenste pop-ups</h3><p>Vervelende reclame en meldingen worden opgespoord en verwijderd.</p></div>
+      </div>
+      <div class="problem-card">
+        <span class="icon" aria-hidden="true">🛡</span>
+        <div><h3>Virussen of spyware</h3><p>Volledige controle en verwijdering van schadelijke software.</p></div>
+      </div>
+      <div class="problem-card">
+        <span class="icon" aria-hidden="true">🖥</span>
+        <div><h3>Scherm vervangen</h3><p>Gebarsten of defect laptopscherm? Wordt vakkundig vervangen.</p></div>
+      </div>
+      <div class="problem-card" style="grid-column:1/-1;">
+        <span class="icon" aria-hidden="true">🔧</span>
+        <div><h3>Algemene problemen &amp; meer</h3><p>Twijfel je of jouw probleem hierbij past? Stuur gerust een berichtje — de meeste pc-problemen kunnen we oplossen.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sales">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Verkoop</div>
+      <h2>Ook terecht voor aankoop</h2>
+      <p>Nood aan nieuwe hardware of software? DDS Computer Service adviseert en verkoopt op maat van uw budget en gebruik.</p>
+    </div>
+    <div class="sales-grid">
+      <div class="sales-item"><span class="node"></span> Standaard pc / laptop</div>
+      <div class="sales-item"><span class="node"></span> PC op maat samengesteld</div>
+      <div class="sales-item"><span class="node"></span> Printers</div>
+      <div class="sales-item"><span class="node"></span> Besturingssystemen (Windows)</div>
+      <div class="sales-item"><span class="node"></span> Office pakket</div>
+      <div class="sales-item"><span class="node"></span> Externe harde schijven, kabels, voedingen &amp; batterijen</div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="tarieven">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Tarieven</div>
+      <h2>Duidelijke, vaste prijzen</h2>
+      <p>Geen verrassingen achteraf — dit zijn de tarieven voor de meest gevraagde herstellingen.</p>
+    </div>
+    <div class="price-card">
+      <div class="price-card-inner">
+        <div class="price-head">
+          <span class="mono">FACTUUR // DDS-SERVICE</span>
+          <span class="mono">2026</span>
+        </div>
+        <div class="price-row"><span class="label">Oplossen van eenvoudige problemen</span><span class="amount">€ 35</span></div>
+        <div class="price-row"><span class="label">Verwijderen van spyware / virussen, nazicht pc</span><span class="amount">€ 50</span></div>
+        <div class="price-row"><span class="label">Herinstallatie besturingssysteem (zonder extra programma's)</span><span class="amount">€ 65</span></div>
+        <div class="price-row"><span class="label">Installatie andere programma's</span><span class="amount">€ 15</span></div>
+        <div class="price-row"><span class="label">Andere problemen</span><span class="amount">prijs op aanvraag</span></div>
+        <div class="price-foot">Alle prijzen zijn richtprijzen. Contacteer ons voor een offerte op maat.</div>
+      </div>
+    </div>
+
+    <a class="folder-banner" href="https://ddscomputerservice.be/onewebmedia/folder/juni%202026/mobile/index.html" target="_blank" rel="noopener">
+      <span class="icon" aria-hidden="true">📰</span>
+      <span>
+        <span class="folder-title">Bekijk onze nieuwste folder</span>
+        <span class="folder-sub">Actuele prijzen &amp; promoties op pc's, laptops, monitoren en accessoires</span>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<section class="drone" id="drone">
+  <div class="wrap">
+    <div>
+      <span class="drone-badge">🛰 Gelicentieerd drone-piloot</span>
+      <h2>Ook unieke dronebeelden</h2>
+      <p>Op zoek naar unieke beelden van jouw feest, of wil je de toestand van je dak checken na een storm? DDS Computer Service beschikt over de nodige licenties om met de drone te vliegen. Bekijk voorbeelden op onze social media.</p>
+    </div>
+    <div class="drone-videos">
+      <a class="drone-video-card" href="https://www.youtube.com/watch?v=vH1aL1d_n2I" target="_blank" rel="noopener" aria-label="Bekijk dronebeelden video 1 op YouTube">
+        <img src="https://img.youtube.com/vi/vH1aL1d_n2I/hqdefault.jpg" alt="" loading="lazy">
+        <span class="play-btn" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="#14181C"/></svg>
+        </span>
+      </a>
+      <a class="drone-video-card" href="https://www.youtube.com/watch?v=_SeK1mvrCXU" target="_blank" rel="noopener" aria-label="Bekijk dronebeelden video 2 op YouTube">
+        <img src="https://img.youtube.com/vi/_SeK1mvrCXU/hqdefault.jpg" alt="" loading="lazy">
+        <span class="play-btn" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="#14181C"/></svg>
+        </span>
+      </a>
+      <a class="drone-video-card" href="https://www.youtube.com/watch?v=RVBj2HPwABA" target="_blank" rel="noopener" aria-label="Bekijk dronebeelden video 3 op YouTube">
+        <img src="https://img.youtube.com/vi/RVBj2HPwABA/hqdefault.jpg" alt="" loading="lazy">
+        <span class="play-btn" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="#14181C"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="over-ons">
+  <div class="wrap">
+    <div class="about-stat">
+      <div class="big mono">2014</div>
+      <div class="small">Actief sinds</div>
+    </div>
+    <div class="about-copy">
+      <div class="eyebrow">Over ons</div>
+      <h2>Ruime ervaring, persoonlijke service</h2>
+      <p>DDS Computer Service werd opgericht in 2014. Sindsdien bouwden we ruime ervaring op in het oplossen van pc-problemen, de verkoop van hardware en meer.</p>
+      <p>Er wordt steeds op afspraak gewerkt — stuur ons gerust een mailtje, WhatsApp-bericht of berichtje via Instagram om iets in te plannen. Telefonisch zijn we bereikbaar op weekdagen tussen 19u en 21u.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Contact</div>
+      <h2>Maak een afspraak</h2>
+      <p>Boekweithof 1, 9180 Lokeren. Werken op afspraak — reageer via mail, WhatsApp of Instagram.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="row">
+          <span class="icon" aria-hidden="true">☏</span>
+          <div>
+            <div class="label">Telefoon (GSM)</div>
+            <a class="value" href="tel:+32498439285">0498 43 92 85</a>
+            <div class="sub">Bereikbaar op weekdagen tussen 19u en 21u</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="icon" aria-hidden="true">💬</span>
+          <div>
+            <div class="label">WhatsApp</div>
+            <a class="value" href="https://wa.me/32498439285" target="_blank" rel="noopener">0498 43 92 85</a>
+            <div class="sub">Snelste manier om een afspraak te maken</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="icon" aria-hidden="true">✉</span>
+          <div>
+            <div class="label">E-mail</div>
+            <a class="value" href="mailto:info@ddscomputerservice.be">info@ddscomputerservice.be</a>
+          </div>
+        </div>
+        <div class="row">
+          <span class="icon" aria-hidden="true">📍</span>
+          <div>
+            <div class="label">Adres</div>
+            <a class="value" href="https://www.google.com/maps/search/?api=1&query=DDS%20Computer%20Service%2C%20Boekweithof%201%2C%209180%20Lokeren" target="_blank" rel="noopener">Boekweithof 1, 9180 Lokeren</a>
+          </div>
+        </div>
+
+        <table class="hours" id="hours-table" style="margin-top:8px;">
+          <tbody>
+            <tr data-day="1"><td>Maandag</td><td>19:00 – 21:00</td></tr>
+            <tr data-day="2"><td>Dinsdag</td><td>19:00 – 21:00</td></tr>
+            <tr data-day="3"><td>Woensdag</td><td>19:00 – 21:00</td></tr>
+            <tr data-day="4"><td>Donderdag</td><td>19:00 – 21:00</td></tr>
+            <tr data-day="5"><td>Vrijdag</td><td>19:00 – 21:00</td></tr>
+            <tr data-day="6"><td>Zaterdag</td><td>Gesloten</td></tr>
+            <tr data-day="0"><td>Zondag</td><td>Gesloten</td></tr>
+          </tbody>
+        </table>
+
+        <div class="social-row">
+          <span class="social-tag">📷 Instagram — link toevoegen</span>
+          <span class="social-tag">📘 Facebook — link toevoegen</span>
+        </div>
+      </div>
+
+      <a class="map-frame" href="https://www.google.com/maps/search/?api=1&query=DDS%20Computer%20Service%2C%20Boekweithof%201%2C%209180%20Lokeren" target="_blank" rel="noopener" aria-label="Open DDS Computer Service in Google Maps">
+        <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+          <rect width="400" height="320" fill="#232A31"/>
+          <g stroke="#39424B" stroke-width="3" fill="none">
+            <path d="M0 60 H400"/><path d="M0 150 H400"/><path d="M0 250 H400"/>
+            <path d="M90 0 V320"/><path d="M230 0 V320"/><path d="M330 0 V320"/>
+          </g>
+          <g stroke="#4A5560" stroke-width="6" fill="none"><path d="M0 190 H400"/></g>
+          <g fill="#303941">
+            <rect x="20" y="15" width="55" height="30" rx="4"/>
+            <rect x="110" y="70" width="70" height="45" rx="4"/>
+            <rect x="250" y="15" width="60" height="35" rx="4"/>
+            <rect x="20" y="165" width="50" height="60" rx="4"/>
+            <rect x="250" y="200" width="65" height="35" rx="4"/>
+            <rect x="345" y="70" width="45" height="60" rx="4"/>
+          </g>
+          <circle cx="200" cy="170" r="80" fill="#D98A4B" opacity="0.16"/>
+          <g transform="translate(200,150)">
+            <path d="M0 -34 C18 -34 32 -20 32 -2 C32 22 0 44 0 44 C0 44 -32 22 -32 -2 C-32 -20 -18 -34 0 -34 Z" fill="#D98A4B"/>
+            <circle cx="0" cy="-2" r="12" fill="#14181C"/>
+          </g>
+        </svg>
+        <span class="map-label">
+          <span class="map-label-title">Boekweithof 1, Lokeren</span>
+          <span class="map-label-sub">Open in Google Maps ↗</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="brand" style="color:var(--paper);">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="12" rx="2" stroke="#D98A4B" stroke-width="1.6"/><path d="M8 20h8M12 16v4" stroke="#D98A4B" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </span>
+      <span class="word" style="color:var(--paper);">DDS Computer Service</span>
+    </a>
+    <div class="foot-links">
+      <a href="#diensten">Diensten</a>
+      <a href="#tarieven">Tarieven</a>
+      <a href="#drone">Drone</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="wa" href="https://wa.me/32498439285" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="call" href="tel:+32498439285">Bel na 19u</a>
+</div>
+
+<script>
+  // Openingsuren telefonisch: 0=zo..6=za -> [openH,openM,closeH,closeM] of null
+  const HOURS = {
+    0: null,
+    1: [[19,0,21,0]],
+    2: [[19,0,21,0]],
+    3: [[19,0,21,0]],
+    4: [[19,0,21,0]],
+    5: [[19,0,21,0]],
+    6: null
+  };
+  const DAY_NAMES = ['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+
+  function fmt(h,m){ return m===0 ? `${h}u` : `${h}u${String(m).padStart(2,'0')}`; }
+
+  function computeStatus(){
+    const now = new Date();
+    const day = now.getDay();
+    const mins = now.getHours()*60 + now.getMinutes();
+    const today = HOURS[day];
+
+    if(today){
+      for(const [oh,om,ch,cm] of today){
+        const open = oh*60+om, close = ch*60+cm;
+        if(mins >= open && mins < close){
+          return { open:true, text:`Telefonisch bereikbaar tot ${fmt(ch,cm)}` };
+        }
+      }
+      for(const [oh,om] of today){
+        const open = oh*60+om;
+        if(mins < open){
+          return { open:false, text:`Telefonisch bereikbaar vanaf ${fmt(oh,om)} vandaag` };
+        }
+      }
+    }
+    for(let i=1;i<=7;i++){
+      const d = (day+i)%7;
+      const spec = HOURS[d];
+      if(spec){
+        const [oh,om] = spec[0];
+        const label = i===1 ? 'morgen' : DAY_NAMES[d];
+        return { open:false, text:`Nu niet telefonisch bereikbaar · vanaf ${fmt(oh,om)} ${label}` };
+      }
+    }
+    return { open:false, text:'Nu niet telefonisch bereikbaar' };
+  }
+
+  function applyStatus(){
+    const s = computeStatus();
+    const dot = document.getElementById('status-dot');
+    const text = document.getElementById('status-text');
+    if(dot && text){
+      dot.classList.toggle('closed', !s.open);
+      text.textContent = s.text;
+    }
+    const today = new Date().getDay();
+    document.querySelectorAll('#hours-table tr').forEach(row=>{
+      const d = Number(row.dataset.day);
+      row.classList.toggle('today', d === today);
+      row.classList.toggle('closed', !HOURS[d]);
+    });
+  }
+
+  applyStatus();
+  setInterval(applyStatus, 60000);
+</script>
+
+</body>
+</html>
